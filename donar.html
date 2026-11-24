@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Donar | Huellas & Hogar</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/estilos.css">
+
+<style>
+/* =================================
+   ESTILOS EXCLUSIVOS DE DONAR
+================================= */
+
+.donar-hero {
+    background: var(--beige, #f5eee7);
+    padding: 75px 20px;
+    text-align: center;
+}
+
+.donar-hero .eyebrow {
+    color: var(--terracota, #b86f50);
+}
+
+.donar-hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--terracota, #b86f50);
+    margin: 12px 0;
+}
+
+.donar-hero p {
+    max-width: 700px;
+    margin: auto;
+    color: #625c57;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.donar-contenido {
+    padding: 65px 20px;
+}
+
+.donar-titulo {
+    text-align: center;
+    margin-bottom: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: var(--terracota, #b86f50);
+}
+
+.donar-descripcion {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 40px;
+    color: #68615c;
+    line-height: 1.7;
+}
+
+/* MODALIDADES */
+
+.donar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 65px;
+}
+
+.donar-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px 25px;
+    border: 1px solid #eee4dc;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.25s, border-color 0.25s;
+}
+
+.donar-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--terracota, #b86f50);
+}
+
+.donar-icono {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.donar-card h3 {
+    color: var(--terracota, #b86f50);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.donar-card p {
+    color: #68615c;
+    font-size: 0.94rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.donar-card button {
+    background: var(--terracota, #b86f50);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 11px 22px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s;
+}
+
+.donar-card button:hover {
+    opacity: 0.85;
+}
+
+/* FORMULARIO */
+
+.formulario-donar {
+    max-width: 780px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+    border: 1px solid #eee4dc;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.05);
+}
+
+.formulario-donar h2 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--terracota, #b86f50);
+    font-size: 1.7rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.formulario-intro {
+    text-align: center;
+    color: #68615c;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.campo-donar {
+    margin-bottom: 20px;
+}
+
+.campo-donar label {
+    display: block;
+    font-weight: 600;
+    color: #514943;
+    margin-bottom: 8px;
+}
+
+.campo-donar input,
+.campo-donar select,
+.campo-donar textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #ded6cf;
+    border-radius: 9px;
+    background: #fdfbf9;
+    color: #444;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+}
+
+.campo-donar input:focus,
+.campo-donar select:focus,
+.campo-donar textarea:focus {
+    outline: none;
+    border-color: var(--terracota, #b86f50);
+    background: white;
+}
+
+.campo-donar textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.campos-dobles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* MONTOS */
+
+.montos-donar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.monto-opcion {
+    flex: 1;
+    min-width: 100px;
+    padding: 12px 10px;
+    border: 1px solid #ded6cf;
+    border-radius: 9px;
+    background: #fdfbf9;
+    color: #514943;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: inherit;
+    transition: 0.2s;
+}
+
+.monto-opcion:hover,
+.monto-opcion.seleccionado {
+    background: var(--terracota, #b86f50);
+    color: white;
+    border-color: var(--terracota, #b86f50);
+}
+
+.monto-personalizado {
+    margin-top: 15px;
+}
+
+/* BOTÓN */
+
+.btn-donar {
+    width: 100%;
+    padding: 16px;
+    background: var(--terracota, #b86f50);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s;
+}
+
+.btn-donar:hover {
+    opacity: 0.85;
+}
+
+/* CONFIRMACIÓN */
+
+.mensaje-donar {
+    display: none;
+    margin-top: 22px;
+    padding: 22px;
+    border-radius: 12px;
+    background: #f0f5ed;
+    color: #426044;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.mensaje-donar h3 {
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* INFORMACIÓN FINAL */
+
+.donar-nota {
+    text-align: center;
+    max-width: 700px;
+    margin: 35px auto 0;
+    color: #746b64;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    .donar-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .donar-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-donar {
+        padding: 25px 18px;
+    }
+
+    .campos-dobles {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .donar-titulo {
+        font-size: 1.65rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER ORIGINAL -->
+
+<header class="site-header">
+    <div class="container header-inner">
+
+        <a class="logo" href="index.html">
+            Huellas <span>&</span> Hogar
+        </a>
+
+        <nav class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="mascotas.html">Mascotas</a>
+            <a href="voluntariado.html">Voluntariado</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+
+        <div class="header-actions">
+            <a class="btn btn-primary" href="mascotas.html">Adoptar</a>
+            <a class="btn btn-outline" href="donar.html">Donar</a>
+        </div>
+
+    </div>
+</header>
+
+
+<main>
+
+<!-- PRESENTACIÓN -->
+
+<section class="donar-hero">
+
+    <span class="eyebrow">CADA APORTE CUENTA</span>
+
+    <h1>Tu ayuda deja una huella</h1>
+
+    <p>
+        Cada donación nos permite seguir cuidando a perros y gatos
+        que necesitan una segunda oportunidad. Con tu apoyo podemos
+        entregarles alimento, atención y un lugar seguro.
+    </p>
+
+</section>
+
+
+<!-- MODALIDADES DE DONACIÓN -->
+
+<section class="donar-contenido">
+
+    <div class="container">
+
+        <h2 class="donar-titulo">
+            ¿Cómo quieres ayudar?
+        </h2>
+
+        <p class="donar-descripcion">
+            Existen distintas formas de colaborar con Huellas & Hogar.
+            Elige la alternativa que más se adapte a tus posibilidades.
+        </p>
+
+
+        <div class="donar-grid">
+
+            <!-- DONACIÓN ÚNICA -->
+
+            <article class="donar-card">
+
+                <h3>Aporte único</h3>
+
+                <p>
+                    Tu contribución ayuda a cubrir alimentación,
+                    atención veterinaria, vacunas y otros cuidados
+                    necesarios para nuestros rescatados.
+                </p>
+
+                <button type="button"
+                    onclick="seleccionarDonacion('unica')">
+                    Quiero donar
+                </button>
+
+            </article>
+
+
+            <!-- PADRINO MENSUAL -->
+
+            <article class="donar-card">
+
+
+                <h3>Padrino mensual</h3>
+
+                <p>
+                    Comprométete con nuestros animales realizando
+                    un aporte mensual que permita apoyar sus
+                    necesidades de manera continua.
+                </p>
+
+                <button type="button"
+                    onclick="seleccionarDonacion('mensual')">
+                    Ser padrino
+                </button>
+
+            </article>
+
+
+            <!-- INSUMOS -->
+
+            <article class="donar-card">
+
+                <h3>Donación de insumos</h3>
+
+                <p>
+                    También puedes colaborar con alimento,
+                    mantas, artículos de limpieza y otros
+                    elementos necesarios para su cuidado.
+                </p>
+
+                <button type="button"
+                    onclick="seleccionarDonacion('insumos')">
+                    Donar insumos
+                </button>
+
+            </article>
+
+        </div>
+
+
+        <!-- FORMULARIO -->
+
+        <div class="formulario-donar" id="formulario">
+
+            <h2>Quiero colaborar</h2>
+
+            <p class="formulario-intro">
+                Completa el siguiente formulario para registrar
+                tu intención de colaborar con Huellas & Hogar.
+            </p>
+
+
+            <form id="formDonacion">
+
+                <div class="campo-donar">
+
+                    <label for="modalidad">
+                        Modalidad de donación
+                    </label>
+
+                    <select id="modalidad" name="modalidad" required
+                        onchange="actualizarFormulario()">
+
+                        <option value="">Selecciona una opción</option>
+
+                        <option value="unica">
+                            Aporte económico único
+                        </option>
+
+                        <option value="mensual">
+                            Padrino mensual
+                        </option>
+
+                        <option value="insumos">
+                            Donación de insumos
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MONTO -->
+
+                <div id="seccionMonto" style="display:none;">
+
+                    <div class="campo-donar">
+
+                        <label>
+                            Selecciona el monto de tu aporte
+                        </label>
+
+                        <div class="montos-donar" id="montosDisponibles">
+
+                        </div>
+
+                    </div>
+
+                    <div class="campo-donar monto-personalizado">
+
+                        <label for="montoPersonalizado">
+                            O ingresa otro monto (CLP)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="montoPersonalizado"
+                            min="1000"
+                            step="1000"
+                            placeholder="Ejemplo: 15000"
+                            oninput="limpiarMontoSeleccionado()">
+
+                    </div>
+
+                </div>
+
+
+                <!-- INSUMOS -->
+
+                <div class="campo-donar" id="seccionInsumos"
+                    style="display:none;">
+
+                    <label for="tipoInsumo">
+                        ¿Qué te gustaría donar?
+                    </label>
+
+                    <select id="tipoInsumo">
+
+                        <option value="">Selecciona un insumo</option>
+
+                        <option>Alimento para perros</option>
+                        <option>Alimento para gatos</option>
+                        <option>Mantas y camas</option>
+                        <option>Artículos de limpieza</option>
+                        <option>Medicamentos veterinarios</option>
+                        <option>Otros insumos</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DATOS PERSONALES -->
+
+                <div class="campos-dobles">
+
+                    <div class="campo-donar">
+
+                        <label for="nombre">
+                            Nombre completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Tu nombre"
+                            required>
+
+                    </div>
+
+
+                    <div class="campo-donar">
+
+                        <label for="correo">
+                            Correo electrónico
+                        </label>
+
+                        <input
+                            type="email"
+                            id="correo"
+                            name="correo"
+                            placeholder="correo@ejemplo.com"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="campo-donar">
+
+                    <label for="telefono">
+                        Teléfono de contacto
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefono"
+                        name="telefono"
+                        placeholder="+56 9 1234 5678">
+
+                </div>
+
+
+                <div class="campo-donar">
+
+                    <label for="mensaje">
+                        Mensaje adicional (opcional)
+                    </label>
+
+                    <textarea
+                        id="mensaje"
+                        name="mensaje"
+                        placeholder="Escribe aquí algún comentario...">
+                    </textarea>
+
+                </div>
+
+
+                <button type="submit" class="btn-donar">
+                    Enviar mi solicitud de donación
+                </button>
+
+
+                <div class="mensaje-donar" id="mensajeExito">
+
+                    <h3>¡Gracias por tu interés! 🐾</h3>
+
+                    <p>
+                        Hemos registrado tu solicitud de donación
+                        en esta demostración. Tu apoyo puede marcar
+                        una gran diferencia en la vida de nuestros
+                        peluditos.
+                    </p>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <p class="donar-nota">
+            Cada gesto de colaboración es importante.
+            Gracias por ser parte de Huellas & Hogar y ayudarnos
+            a entregar nuevas oportunidades a quienes más lo necesitan.
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER ORIGINAL -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <div class="footer-brand">
+                    Huellas <span>&</span> Hogar
+                </div>
+
+                <p>
+                    Promovemos el bienestar animal y la adopción responsable.
+                    Cada mascota merece cuidado, respeto y la oportunidad
+                    de encontrar una familia.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Explora</h3>
+
+                <div class="footer-links">
+
+                    <a href="index.html">Inicio</a>
+                    <a href="nosotros.html">Nosotros</a>
+                    <a href="mascotas.html">Mascotas</a>
+                    <a href="voluntariado.html">Voluntariado</a>
+                    <a href="contacto.html">Contacto</a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h3>Cómo ayudar</h3>
+
+                <div class="footer-links">
+
+                    <a href="mascotas.html">Adoptar</a>
+                    <a href="donar.html">Donar</a>
+                    <a href="contacto.html">Ser voluntario</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            © 2026 Huellas & Hogar · Todos los derechos reservados.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* SELECCIONAR MODALIDAD */
+
+function seleccionarDonacion(tipo) {
+
+    document.getElementById("modalidad").value = tipo;
+
+    actualizarFormulario();
+
+    document.getElementById("formulario").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
+
+
+/* ACTUALIZAR FORMULARIO */
+
+function actualizarFormulario() {
+
+    const modalidad = document.getElementById("modalidad").value;
+
+    const seccionMonto = document.getElementById("seccionMonto");
+    const seccionInsumos = document.getElementById("seccionInsumos");
+
+    const montos = document.getElementById("montosDisponibles");
+
+    document.getElementById("montoPersonalizado").value = "";
+
+    document.querySelectorAll(".monto-opcion").forEach(boton => {
+        boton.classList.remove("seleccionado");
+    });
+
+    seccionMonto.style.display = "none";
+    seccionInsumos.style.display = "none";
+
+    montos.innerHTML = "";
+
+    if (modalidad === "unica") {
+
+        seccionMonto.style.display = "block";
+
+        crearMontos(["5000", "10000", "25000"]);
+
+    }
+
+    else if (modalidad === "mensual") {
+
+        seccionMonto.style.display = "block";
+
+        crearMontos(["10000", "20000", "30000"]);
+
+    }
+
+    else if (modalidad === "insumos") {
+
+        seccionInsumos.style.display = "block";
+
+    }
+
+}
+
+
+/* CREAR BOTONES DE MONTOS */
+
+function crearMontos(lista) {
+
+    const contenedor = document.getElementById("montosDisponibles");
+
+    lista.forEach(monto => {
+
+        const boton = document.createElement("button");
+
+        boton.type = "button";
+
+        boton.className = "monto-opcion";
+
+        boton.textContent = "$" + Number(monto).toLocaleString("es-CL");
+
+        boton.onclick = function() {
+
+            document.querySelectorAll(".monto-opcion").forEach(b => {
+                b.classList.remove("seleccionado");
+            });
+
+            boton.classList.add("seleccionado");
+
+            document.getElementById("montoPersonalizado").value = "";
+
+        };
+
+        boton.dataset.monto = monto;
+
+        contenedor.appendChild(boton);
+
+    });
+
+}
+
+
+/* LIMPIAR MONTO SELECCIONADO */
+
+function limpiarMontoSeleccionado() {
+
+    document.querySelectorAll(".monto-opcion").forEach(boton => {
+        boton.classList.remove("seleccionado");
+    });
+
+}
+
+
+/* ENVIAR FORMULARIO */
+
+document.getElementById("formDonacion").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const modalidad = document.getElementById("modalidad").value;
+
+    if (!modalidad) {
+        alert("Por favor, selecciona una modalidad de donación.");
+        return;
+    }
+
+    if (modalidad === "unica" || modalidad === "mensual") {
+
+        const montoPersonalizado = document.getElementById("montoPersonalizado").value;
+
+        const montoSeleccionado = document.querySelector(".monto-opcion.seleccionado");
+
+        if (!montoSeleccionado && (!montoPersonalizado || Number(montoPersonalizado) < 1000)) {
+
+            alert("Por favor, selecciona o ingresa un monto válido.");
+            return;
+
+        }
+
+    }
+
+    if (modalidad === "insumos" && !document.getElementById("tipoInsumo").value) {
+
+        alert("Por favor, selecciona el tipo de insumo que deseas donar.");
+
+        return;
+
+    }
+
+    document.getElementById("mensajeExito").style.display = "block";
+
+    document.getElementById("mensajeExito").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+});
+
+</script>
+
+</body>
+</html>

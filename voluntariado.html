@@ -1,0 +1,987 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Voluntariado | Huellas & Hogar</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/estilos.css">
+
+<style>
+
+/* =====================================
+   ESTILOS EXCLUSIVOS DE VOLUNTARIADO
+===================================== */
+
+.vol-hero {
+    background: var(--beige, #f5eee7);
+    padding: 75px 20px;
+    text-align: center;
+}
+
+.vol-hero .eyebrow {
+    color: var(--terracota, #b86f50);
+}
+
+.vol-hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--terracota, #b86f50);
+    margin: 12px 0;
+}
+
+.vol-hero p {
+    max-width: 720px;
+    margin: auto;
+    color: #625c57;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.vol-section {
+    padding: 65px 20px;
+}
+
+.vol-title {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: var(--terracota, #b86f50);
+    margin-bottom: 12px;
+}
+
+.vol-description {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: #68615c;
+    line-height: 1.7;
+}
+
+/* ACTIVIDADES */
+
+.vol-activities {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.vol-card {
+    background: white;
+    border: 1px solid #eee4dc;
+    border-radius: 15px;
+    padding: 30px 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.04);
+    transition: transform 0.25s;
+}
+
+.vol-card:hover {
+    transform: translateY(-5px);
+}
+
+.vol-icon {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+}
+
+.vol-card h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--terracota, #b86f50);
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+}
+
+.vol-card p {
+    color: #68615c;
+    font-size: 0.94rem;
+    line-height: 1.7;
+}
+
+/* REQUISITOS */
+
+.vol-requisitos {
+    background: var(--beige, #f5eee7);
+}
+
+.requisitos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.requisito {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.requisito-icon {
+    color: var(--terracota, #b86f50);
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.requisito p {
+    color: #625c57;
+    line-height: 1.6;
+    font-size: 0.94rem;
+}
+
+/* TURNOS */
+
+.turnos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.turno-card {
+    text-align: center;
+    background: white;
+    border: 1px solid #eee4dc;
+    border-radius: 15px;
+    padding: 30px 20px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.04);
+}
+
+.turno-card h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--terracota, #b86f50);
+    margin-bottom: 12px;
+}
+
+.turno-hora {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #514943;
+    margin-bottom: 10px;
+}
+
+.turno-card p {
+    color: #68615c;
+    font-size: 0.93rem;
+    line-height: 1.6;
+}
+
+.turnos-nota {
+    text-align: center;
+    margin-top: 25px;
+    color: #746b64;
+    font-size: 0.9rem;
+}
+
+/* FORMULARIO */
+
+.vol-form-section {
+    background: #fdfbf9;
+}
+
+.vol-form {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    border: 1px solid #eee4dc;
+    border-radius: 18px;
+    padding: 40px;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.05);
+}
+
+.vol-form h2 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--terracota, #b86f50);
+    text-align: center;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+}
+
+.vol-form-intro {
+    text-align: center;
+    color: #68615c;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.vol-field {
+    margin-bottom: 20px;
+}
+
+.vol-field label {
+    display: block;
+    color: #514943;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.vol-field input,
+.vol-field select,
+.vol-field textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #ded6cf;
+    border-radius: 9px;
+    background: #fdfbf9;
+    color: #444;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+}
+
+.vol-field input:focus,
+.vol-field select:focus,
+.vol-field textarea:focus {
+    outline: none;
+    border-color: var(--terracota, #b86f50);
+    background: white;
+}
+
+.vol-field textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.vol-fields-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* DISPONIBILIDAD */
+
+.disponibilidad {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.disponibilidad label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: #fdfbf9;
+    border: 1px solid #eee4dc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+.disponibilidad input {
+    width: auto;
+    accent-color: var(--terracota, #b86f50);
+}
+
+/* BOTÓN */
+
+.vol-btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 30px;
+    background: var(--terracota, #b86f50);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s;
+}
+
+.vol-btn:hover {
+    opacity: 0.85;
+}
+
+/* MENSAJE */
+
+.vol-success {
+    display: none;
+    margin-top: 22px;
+    padding: 22px;
+    background: #f0f5ed;
+    color: #426044;
+    border-radius: 12px;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.vol-success h3 {
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 8px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    .vol-activities,
+    .turnos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .vol-activities,
+    .turnos-grid,
+    .requisitos-grid,
+    .vol-fields-double {
+        grid-template-columns: 1fr;
+    }
+
+    .vol-form {
+        padding: 25px 18px;
+    }
+
+    .disponibilidad {
+        grid-template-columns: 1fr;
+    }
+
+    .vol-title {
+        font-size: 1.65rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =================================
+     HEADER ORIGINAL
+================================= -->
+
+<header class="site-header">
+
+    <div class="container header-inner">
+
+        <a class="logo" href="index.html">
+            Huellas <span>&</span> Hogar
+        </a>
+
+        <nav class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="mascotas.html">Mascotas</a>
+            <a href="voluntariado.html">Voluntariado</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+
+        <div class="header-actions">
+    <a class="btn btn-primary" href="mascotas.html">Adoptar</a>
+    <a class="btn btn-donar" href="donar.html">Donar</a>
+</div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<!-- =================================
+     PRESENTACIÓN
+================================= -->
+
+<section class="vol-hero">
+
+    <span class="eyebrow">SÉ PARTE DEL CAMBIO</span>
+
+    <h1>Tu tiempo puede cambiar una vida</h1>
+
+    <p>
+        En Huellas & Hogar creemos que todos podemos aportar
+        algo para mejorar la vida de los animales que necesitan
+        una segunda oportunidad. Súmate a nuestro equipo de
+        voluntarios y ayúdanos a entregarles cuidado, cariño y protección.
+    </p>
+
+</section>
+
+
+<!-- =================================
+     ACTIVIDADES
+================================= -->
+
+<section class="vol-section">
+
+    <div class="container">
+
+        <h2 class="vol-title">
+            ¿Qué harás como voluntario?
+        </h2>
+
+        <p class="vol-description">
+            Como parte de nuestro equipo podrás participar en
+            distintas actividades que contribuyen al bienestar
+            de nuestros perros y gatos.
+        </p>
+
+
+        <div class="vol-activities">
+
+            <article class="vol-card">
+
+                <h3>Cuidado de animales</h3>
+
+                <p>
+                    Ayudarás con la alimentación, limpieza de espacios,
+                    paseos y acompañamiento de los animales.
+                </p>
+
+            </article>
+
+
+            <article class="vol-card">
+
+                <h3>Mantención del refugio</h3>
+
+                <p>
+                    Colaborarás manteniendo limpios y ordenados
+                    los espacios donde viven nuestros rescatados.
+                </p>
+
+            </article>
+
+
+            <article class="vol-card">
+
+                <h3>Difusión y redes sociales</h3>
+
+                <p>
+                    Podrás ayudar compartiendo fotografías,
+                    historias y publicaciones para promover
+                    la adopción responsable.
+                </p>
+
+            </article>
+
+
+            <article class="vol-card">
+
+                <h3>Acompañamiento</h3>
+
+                <p>
+                    Entregarás compañía, cariño y atención
+                    a los animales que esperan encontrar
+                    una familia.
+                </p>
+
+            </article>
+
+
+            <article class="vol-card">
+
+                <h3>Campañas solidarias</h3>
+
+                <p>
+                    Participarás en actividades de recolección
+                    de alimentos, insumos y artículos necesarios
+                    para el refugio.
+                </p>
+
+            </article>
+
+
+            <article class="vol-card">
+
+                <h3>Apoyo en adopciones</h3>
+
+                <p>
+                    Podrás colaborar en actividades de difusión
+                    y orientación para que nuestros animales
+                    encuentren un hogar responsable.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     REQUISITOS
+================================= -->
+
+<section class="vol-section vol-requisitos">
+
+    <div class="container">
+
+        <h2 class="vol-title">
+            Requisitos para ser voluntario
+        </h2>
+
+        <p class="vol-description">
+            Buscamos personas comprometidas, responsables
+            y con ganas de contribuir al bienestar animal.
+        </p>
+
+
+        <div class="requisitos-grid">
+
+            <div class="requisito">
+                <span class="requisito-icon">✓</span>
+                <p>
+                    <strong>Amor y respeto por los animales:</strong>
+                    tener disposición para cuidar y tratar
+                    adecuadamente a perros y gatos.
+                </p>
+            </div>
+
+
+            <div class="requisito">
+                <span class="requisito-icon">✓</span>
+                <p>
+                    <strong>Compromiso y responsabilidad:</strong>
+                    cumplir con los turnos y actividades acordadas.
+                </p>
+            </div>
+
+
+            <div class="requisito">
+                <span class="requisito-icon">✓</span>
+                <p>
+                    <strong>Disponibilidad de tiempo:</strong>
+                    contar con horarios para participar
+                    en las actividades del refugio.
+                </p>
+            </div>
+
+
+            <div class="requisito">
+                <span class="requisito-icon">✓</span>
+                <p>
+                    <strong>Trabajo en equipo:</strong>
+                    mantener una buena comunicación y
+                    disposición para colaborar con otras personas.
+                </p>
+            </div>
+
+
+            <div class="requisito">
+                <span class="requisito-icon">✓</span>
+                <p>
+                    <strong>Actitud de aprendizaje:</strong>
+                    estar dispuesto a recibir indicaciones
+                    y aprender sobre el cuidado animal.
+                </p>
+            </div>
+
+
+            <div class="requisito">
+                <span class="requisito-icon">✓</span>
+                <p>
+                    <strong>Respeto por las normas:</strong>
+                    seguir las indicaciones de seguridad
+                    y funcionamiento del refugio.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     TURNOS
+================================= -->
+
+<section class="vol-section">
+
+    <div class="container">
+
+        <h2 class="vol-title">
+            Turnos de voluntariado
+        </h2>
+
+        <p class="vol-description">
+            Puedes indicar tu disponibilidad y elegir el horario
+            que mejor se adapte a tus actividades.
+        </p>
+
+
+        <div class="turnos-grid">
+
+            <article class="turno-card">
+
+                <h3>Turno mañana</h3>
+
+                <div class="turno-hora">
+                    09:00 - 13:00
+                </div>
+
+                <p>
+                    Apoyo en alimentación, limpieza,
+                    paseos y cuidado de los animales.
+                </p>
+
+            </article>
+
+
+            <article class="turno-card">
+
+                <h3>Turno tarde</h3>
+
+                <div class="turno-hora">
+                    14:00 - 18:00
+                </div>
+
+                <p>
+                    Acompañamiento, actividades recreativas
+                    y apoyo en las tareas del refugio.
+                </p>
+
+            </article>
+
+
+            <article class="turno-card">
+
+                <h3>Fines de semana</h3>
+
+                <div class="turno-hora">
+                    10:00 - 14:00
+                </div>
+
+                <p>
+                    Colaboración en actividades especiales,
+                    campañas y difusión de adopciones.
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <p class="turnos-nota">
+            Los horarios son referenciales y pueden coordinarse
+            según las necesidades del refugio y la disponibilidad
+            de cada voluntario.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     FORMULARIO DE POSTULACIÓN
+================================= -->
+
+<section class="vol-section vol-form-section" id="postular">
+
+    <div class="container">
+
+        <div class="vol-form">
+
+            <h2>Postula como voluntario</h2>
+
+            <p class="vol-form-intro">
+                Completa el siguiente formulario y cuéntanos
+                un poco sobre ti. Queremos conocerte y saber
+                cómo te gustaría formar parte de Huellas & Hogar.
+            </p>
+
+
+            <form id="formVoluntariado">
+
+                <div class="vol-fields-double">
+
+                    <div class="vol-field">
+
+                        <label for="nombre">
+                            Nombre completo *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Tu nombre completo"
+                            required>
+
+                    </div>
+
+
+                    <div class="vol-field">
+
+                        <label for="edad">
+                            Edad *
+                        </label>
+
+                        <input
+                            type="number"
+                            id="edad"
+                            name="edad"
+                            min="18"
+                            placeholder="Tu edad"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="vol-fields-double">
+
+                    <div class="vol-field">
+
+                        <label for="correo">
+                            Correo electrónico *
+                        </label>
+
+                        <input
+                            type="email"
+                            id="correo"
+                            name="correo"
+                            placeholder="correo@ejemplo.com"
+                            required>
+
+                    </div>
+
+
+                    <div class="vol-field">
+
+                        <label for="telefono">
+                            Teléfono *
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefono"
+                            name="telefono"
+                            placeholder="+56 9 1234 5678"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="vol-field">
+
+                    <label for="actividad">
+                        ¿En qué actividad te gustaría participar? *
+                    </label>
+
+                    <select id="actividad" name="actividad" required>
+
+                        <option value="">Selecciona una actividad</option>
+
+                        <option>Cuidado de animales</option>
+                        <option>Mantención del refugio</option>
+                        <option>Difusión y redes sociales</option>
+                        <option>Campañas solidarias</option>
+                        <option>Apoyo en adopciones</option>
+                        <option>Otras actividades</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="vol-field">
+
+                    <label>
+                        ¿Qué turnos tienes disponibles? *
+                    </label>
+
+                    <div class="disponibilidad">
+
+                        <label>
+                            <input type="checkbox" name="turnos" value="Mañana">
+                            Mañana (09:00 - 13:00)
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="turnos" value="Tarde">
+                            Tarde (14:00 - 18:00)
+                        </label>
+
+                        <label>
+                            <input type="checkbox" name="turnos" value="Fin de semana">
+                            Fines de semana
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="vol-field">
+
+                    <label for="experiencia">
+                        ¿Tienes experiencia con animales?
+                    </label>
+
+                    <select id="experiencia" name="experiencia">
+
+                        <option value="">Selecciona una opción</option>
+
+                        <option>Sí, tengo experiencia</option>
+                        <option>No, pero quiero aprender</option>
+                        <option>Tengo mascotas en casa</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="vol-field">
+
+                    <label for="motivacion">
+                        ¿Por qué quieres ser voluntario? *
+                    </label>
+
+                    <textarea
+                        id="motivacion"
+                        name="motivacion"
+                        placeholder="Cuéntanos qué te motiva a participar..."
+                        required></textarea>
+
+                </div>
+
+
+                <button type="submit" class="vol-btn">
+                    Enviar postulación
+                </button>
+
+
+                <div class="vol-success" id="volSuccess">
+
+                    <h3>¡Gracias por postular!</h3>
+
+                    <p>
+                        Tu postulación ha sido registrada en esta
+                        demostración. Gracias por querer formar parte
+                        de Huellas & Hogar y contribuir al bienestar animal.
+                    </p>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =================================
+     FOOTER ORIGINAL
+================================= -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div>
+
+                <div class="footer-brand">
+                    Huellas <span>&</span> Hogar
+                </div>
+
+                <p>
+                    Promovemos el bienestar animal y la adopción responsable.
+                    Cada mascota merece cuidado, respeto y la oportunidad
+                    de encontrar una familia.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h3>Explora</h3>
+
+                <div class="footer-links">
+
+                    <a href="index.html">Inicio</a>
+                    <a href="nosotros.html">Nosotros</a>
+                    <a href="mascotas.html">Mascotas</a>
+                    <a href="voluntariado.html">Voluntariado</a>
+                    <a href="contacto.html">Contacto</a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h3>Cómo ayudar</h3>
+
+                <div class="footer-links">
+
+                    <a href="mascotas.html">Adoptar</a>
+                    <a href="donar.html">Donar</a>
+                    <a href="voluntariado.html">Ser voluntario</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            © 2026 Huellas & Hogar · Todos los derechos reservados.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =================================
+     JAVASCRIPT DEL FORMULARIO
+================================= -->
+
+<script>
+
+document.getElementById("formVoluntariado").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const turnos = document.querySelectorAll(
+        'input[name="turnos"]:checked'
+    );
+
+    if (turnos.length === 0) {
+
+        alert("Por favor, selecciona al menos un turno disponible.");
+
+        return;
+
+    }
+
+    document.getElementById("volSuccess").style.display = "block";
+
+    document.getElementById("volSuccess").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+});
+
+</script>
+
+</body>
+</html>
